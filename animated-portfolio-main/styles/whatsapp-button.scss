@@ -1,0 +1,37 @@
+@import "./theme.scss";
+
+.ai-whatsapp-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    svg {
+        fill: white;
+        stroke: none;
+        transition: all 0.3s ease;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    @media only screen and (max-width: 800px) {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}

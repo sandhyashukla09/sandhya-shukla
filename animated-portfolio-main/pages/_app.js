@@ -1,0 +1,73 @@
+import { useEffect } from 'react';
+import WhatsAppButton from '../components/WhatsAppButton';
+import Head from "next/head";
+import { ReactLenis } from '@studio-freight/react-lenis';
+import AOS from "aos";
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'aos/dist/aos.css'
+
+import '../styles/globals.scss'
+
+import '/styles/header.scss'
+import '/styles/outer.scss'
+import '/styles/gooery.scss'
+import '/styles/works.scss'
+import '/styles/side-element.scss'
+import '/styles/myself.scss'
+import '/styles/graphics.scss'
+import '/styles/projects.scss'
+import '/styles/maps.scss'
+import '/styles/views-title.scss'
+import '/styles/hover-image.scss'
+import '/styles/window-screen.scss'
+import '/styles/reviews.scss'
+import '/styles/top-scrolled-bar.scss'
+import '/styles/contact.scss'
+import '/styles/cursor.scss'
+import '/styles/afzalimdad.scss'
+import '/styles/pre-loader.scss'
+import '/styles/certifications.scss'
+import '/styles/whatsapp-button.scss'
+
+
+
+function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    import("bootstrap/dist/js/bootstrap.bundle");
+    import("aos/dist/aos.js");
+    AOS.init();
+  }, [])
+  return (
+    <ReactLenis root>
+      <Head>
+        <title>Sandhya Shukla | Creative Web Designer &amp; Digital Marketing Specialist</title>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="description" content="Sandhya Shukla — Creative Web Designer, UI/UX Designer, Digital Marketing Specialist, App Developer, Graphic Designer, Content Strategist & Social Media Manager. Building modern digital experiences." />
+        <meta name="keywords" content="Sandhya Shukla, Web Designer, UI/UX Designer, Digital Marketing, App Developer, Graphic Designer, Content Strategist, Social Media Manager, Freelancer" />
+
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          href="../public/icons/16.png"
+          rel="icon"
+          type="image/png"
+          sizes="16x16" />
+        <link
+          href="../public/icons/32.png"
+          rel="icon"
+          type="image/png"
+          sizes="32x32" />
+        <link rel="apple-touch-icon" href="../public/icons/16.png"></link>
+        <link rel="apple-touch-icon" href="../public/icons/32.png"></link>
+      </Head>
+      <Component {...pageProps} />
+      <WhatsAppButton />
+    </ReactLenis>
+  );
+}
+
+export default MyApp

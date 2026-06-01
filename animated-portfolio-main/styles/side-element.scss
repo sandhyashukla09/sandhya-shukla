@@ -1,0 +1,84 @@
+@import "./theme.scss";
+
+/* Fade-in and slide-up animation for side elements */
+@keyframes sideElementsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-side-elements {
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+
+  .ai-side-elements-container {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: sideElementsFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.5s;
+    opacity: 0; /* starts hidden until animation */
+
+    .ai-side-elements-item {
+      margin: 15px 0;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      svg {
+        stroke: rgba(255, 255, 255, 0.5);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 2px;
+      }
+
+      .ai-side-elements-text {
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.15em;
+        writing-mode: vertical-rl;
+        font-family: "Source Code Pro", monospace;
+        font-size: 13px;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 10px 0;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+
+        svg {
+          stroke: $themeColor4;
+          filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.4));
+        }
+
+        .ai-side-elements-text {
+          color: $themeColor4;
+          text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+      }
+    }
+
+    .ai-side-elements-line {
+      display: block;
+      width: 1px;
+      height: 90px;
+      margin: 15px auto 0 auto;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+    }
+  }
+
+  .ai-side-elements-left {
+    left: 40px;
+  }
+
+  .ai-side-elements-right {
+    right: 40px;
+  }
+}

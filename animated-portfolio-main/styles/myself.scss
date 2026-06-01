@@ -1,0 +1,283 @@
+@import "./theme.scss";
+
+/* ─────────────────────────────────────────
+   About Me Section — Premium Enhancement
+───────────────────────────────────────── */
+
+.ai-myself {
+  width: 100vw;
+  position: relative;
+
+  /* ── decorative background gear icon ── */
+  .ai-myself-settings-icon {
+    svg {
+      width: 30vw;
+      height: 100%;
+      min-width: 250px;
+      fill: $themeColor4;
+      opacity: 0.04;
+    }
+    position: absolute;
+    left: 5%;
+    margin-top: 500px;
+    pointer-events: none;
+  }
+
+  /* ── main container ── */
+  .ai-myself-container {
+    max-width: 960px;
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 0 120px;
+
+    /* ── numbered section label above heading ── */
+    .ai-myself-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: $themeColor4;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0.75;
+    }
+
+    /* ── body paragraphs ── */
+    .ai-myself-paragraph {
+      margin: 0 0 18px;
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: $themeColor3;
+      max-width: 520px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      opacity: 0.88;
+
+      &:last-of-type {
+        margin-bottom: 28px;
+      }
+    }
+
+    /* ── skill list parent ── */
+    .ai-myself-list-parent {
+      margin-top: 4px;
+      gap: 0;
+
+      .col {
+        padding-right: 12px;
+      }
+    }
+
+    /* ── individual skill chip ── */
+    .ai-myself-skill {
+      display: flex;
+      align-items: center;
+      color: $themeColor3;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      cursor: default;
+      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      position: relative;
+      padding: 6px 10px 6px 8px;
+      border-radius: 4px;
+
+      /* subtle hover highlight */
+      &:hover {
+        color: $themeColor4;
+        background-color: rgba(100, 255, 218, 0.05);
+        transform: translateX(4px);
+
+        &::before {
+          color: $themeColor4;
+          transform: scale(1.2);
+        }
+      }
+
+      /* ── arrow bullet ── */
+      &::before {
+        content: "▹";
+        color: $themeColor4;
+        font-size: 13px;
+        line-height: 1;
+        margin-right: 10px;
+        flex-shrink: 0;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+    }
+
+    /* ── skills divider label ── */
+    .ai-myself-tech-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: $themeColor4;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.55;
+    }
+
+    /* ────────────────────────────
+       Profile image wrapper
+    ──────────────────────────── */
+    .ai-myself-profile-wrapper {
+      position: relative;
+    }
+
+    /* glassmorphism image frame container */
+    .ai-myself-profile-parent {
+      max-width: 300px;
+      max-height: 300px;
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      /* soft cyan glow behind image */
+      &::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: 8px;
+        background: linear-gradient(
+          135deg,
+          rgba(100, 255, 218, 0.25) 0%,
+          rgba(100, 255, 218, 0.05) 50%,
+          rgba(100, 255, 218, 0.12) 100%
+        );
+        z-index: -1;
+        filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+
+      &:hover::after {
+        filter: blur(18px);
+        opacity: 0.9;
+      }
+    }
+
+    /* the image itself */
+    .ai-myself-profile {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 6px;
+      transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    /* responsive breakpoints */
+    @media only screen and (max-width: 800px) {
+      .ai-myself-profile-parent {
+        max-width: 240px;
+
+        &::after {
+          filter: blur(8px);
+        }
+      }
+
+      .ai-myself-profile {
+        max-width: 240px;
+      }
+
+      .ai-myself-paragraph {
+        max-width: 100%;
+      }
+    }
+
+    @media only screen and (max-width: 576px) {
+      padding: 80px 0 80px;
+
+      .ai-myself-paragraph {
+        font-size: 14.5px;
+      }
+    }
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   Enhanced HoverImage — glassmorphism border + glow
+──────────────────────────────────────────────────── */
+
+/* override hover-image border specifically inside about section */
+.ai-myself .ai-hover-image {
+
+  .ai-hover-image-border {
+    transform: translateX(10px) translateY(10px);
+    border: 1.5px solid $themeColor4;
+    border-radius: 6px;
+    opacity: 0.6;
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    /* glassmorphism shimmer layer */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 5px;
+      background: linear-gradient(
+        135deg,
+        rgba(100, 255, 218, 0.08) 0%,
+        transparent 60%
+      );
+    }
+  }
+
+  .ai-hover-image-filter {
+    opacity: 0.08;
+    background: linear-gradient(
+      180deg,
+      transparent 50%,
+      rgba(100, 255, 218, 0.12) 100%
+    );
+    border-radius: 6px;
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .ai-hover-profile {
+    border-radius: 6px;
+    filter: grayscale(0.3) contrast(1.02);
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  &:hover {
+    .ai-hover-image-border {
+      transform: translateX(6px) translateY(6px);
+      opacity: 1;
+      border-color: $themeColor4;
+    }
+
+    .ai-hover-image-filter {
+      opacity: 0;
+    }
+
+    .ai-hover-profile {
+      filter: grayscale(0) contrast(1.05) brightness(1.02);
+    }
+  }
+}
+
+/* ─────────────────────────────────────────
+   Fade-up animation for section entrance
+───────────────────────────────────────── */
+@keyframes fadeUpSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-myself-animate {
+  animation: fadeUpSmooth 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ai-myself-animate-delay-1 { animation-delay: 0.08s; }
+.ai-myself-animate-delay-2 { animation-delay: 0.16s; }
+.ai-myself-animate-delay-3 { animation-delay: 0.24s; }
+.ai-myself-animate-delay-4 { animation-delay: 0.32s; }
+.ai-myself-animate-delay-5 { animation-delay: 0.40s; }

@@ -1,0 +1,141 @@
+@import "./theme.scss";
+
+/* ─────────────────────────────────────────
+   Browser Mockup — Premium Enhancement
+───────────────────────────────────────── */
+
+.ai-window-screen {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background-color: #0b1120;
+
+  /* outer glow ring */
+  box-shadow:
+    0 0 0 1px rgba(100, 255, 218, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+
+  /* ── Taskbar / browser chrome ── */
+  .ai-taskbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(30, 35, 45, 0.95) 0%, rgba(20, 25, 35, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    gap: 0;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* subtle bottom separator line */
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(100, 255, 218, 0.2),
+        transparent
+      );
+    }
+
+    $circleSize: 12px;
+
+    /* ── traffic lights ── */
+    .ai-circles {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      padding-right: 16px;
+    }
+
+    .ai-circle {
+      width: $circleSize;
+      height: $circleSize;
+      border-radius: 50%;
+      transition: filter 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+
+      /* inner highlight gloss */
+      &::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        filter: blur(0.5px);
+      }
+    }
+
+    .ai-circle1 {
+      background: radial-gradient(circle at 30% 30%, #ff5f57, #cc0000);
+      box-shadow: 0 0 8px rgba(255, 95, 87, 0.4);
+    }
+
+    .ai-circle2 {
+      background: radial-gradient(circle at 30% 30%, #ffbd2e, #cc8800);
+      box-shadow: 0 0 8px rgba(255, 189, 46, 0.4);
+    }
+
+    .ai-circle3 {
+      background: radial-gradient(circle at 30% 30%, #28c840, #008800);
+      box-shadow: 0 0 8px rgba(40, 200, 64, 0.4);
+    }
+
+    /* hover on taskbar — lights glow brighter */
+    &:hover {
+      .ai-circle1 { filter: brightness(1.2); transform: scale(1.1); box-shadow: 0 0 12px rgba(255, 95, 87, 0.7); }
+      .ai-circle2 { filter: brightness(1.2); transform: scale(1.1); box-shadow: 0 0 12px rgba(255, 189, 46, 0.7); }
+      .ai-circle3 { filter: brightness(1.2); transform: scale(1.1); box-shadow: 0 0 12px rgba(40, 200, 64, 0.7); }
+    }
+
+    /* ── address bar ── */
+    .ai-url {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 0 10px;
+
+      .ai-url-box {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        font-size: 12px;
+        font-family: "Inter", "Quicksand", sans-serif;
+        padding: 6px 16px;
+        width: 75%;
+        max-width: 400px;
+        text-align: center;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.5);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: 0.03em;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.4);
+          border-color: rgba(100, 255, 218, 0.25);
+          color: rgba(100, 255, 218, 0.8);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(100, 255, 218, 0.1);
+        }
+      }
+    }
+  }
+
+  /* ── image content area ── */
+  & > div:last-child {
+    overflow: hidden;
+    line-height: 0; /* removes gap under img */
+  }
+}

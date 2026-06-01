@@ -1,0 +1,276 @@
+@import "./theme.scss";
+
+@keyframes infiniteMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+@keyframes lightStreakSweep {
+  0% { transform: rotate(-45deg) translateX(-200%); }
+  100% { transform: rotate(-45deg) translateX(200%); }
+}
+
+@keyframes quoteFloat {
+  0%, 100% { transform: translateY(0) rotate(10deg); }
+  50% { transform: translateY(-5px) rotate(5deg); }
+}
+
+.ai-reviews {
+  width: 100vw;
+  min-height: 80vh;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #0d1117; // Matches the premium dark theme
+
+  /* Background Elements */
+  .ai-reviews-bg-elements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    .light-streak {
+      position: absolute;
+      width: 150vw;
+      height: 100px;
+      background: linear-gradient(90deg, transparent, rgba($themeColor3, 0.04), transparent);
+      animation: lightStreakSweep 10s infinite linear;
+      
+      &.streak-1 { top: 20%; animation-duration: 15s; }
+      &.streak-2 { top: 60%; animation-duration: 20s; animation-direction: reverse; }
+    }
+
+    .particle-field {
+      position: absolute;
+      inset: 0;
+      
+      .particle {
+        position: absolute;
+        width: 3px; height: 3px;
+        background: rgba($themeColor3, 0.8);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba($themeColor3, 1);
+        animation: floatParticle 15s linear infinite;
+        
+        @for $i from 0 through 14 {
+          &.p-#{$i} {
+            left: random(100) * 1%;
+            top: 100% + random(20) * 1%;
+            animation-delay: -#{random(20)}s;
+            animation-duration: #{10 + random(10)}s;
+            transform: scale(#{0.5 + random(10) * 0.1});
+          }
+        }
+      }
+    }
+  }
+
+  .ai-reviews-container {
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 40px;
+  }
+
+  .ai-reviews-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    padding: 60px 0;
+    
+    /* Elegant gradient fade on edges */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+
+    .ai-reviews-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: infiniteMarquee 35s linear infinite;
+      
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+  }
+
+  .ai-review-card-wrapper {
+    padding: 0 24px;
+    perspective: 1200px; // Enables 3D transforms for children
+  }
+
+  .ai-review-card {
+    position: relative;
+    background: rgba(20, 25, 30, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    width: 500px;
+    height: 100%;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      
+    // 3D Magnetic Transform
+    transform-style: preserve-3d;
+    transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    transform: rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+    
+    /* Interactive Mouse-follow interior glow */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba($themeColor3, 0.1),
+        transparent 40%
+      );
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Edge highlighting tracer */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba($themeColor3, 0.6),
+        transparent 40%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Card internal light streak (subtle looping animation) */
+    .card-light-streak {
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      transform: skewX(-20deg);
+      animation: lightStreakSweep 8s infinite;
+      pointer-events: none;
+      border-radius: inherit;
+      z-index: 1;
+    }
+
+    .ai-review-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+      transform: translateZ(30px); // 3D Pop effect
+
+      .ai-review-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba($themeColor3, 0.1);
+        border: 1px solid rgba($themeColor3, 0.2);
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 700;
+        color: $themeColor3;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba($themeColor3, 0.05);
+        transition: all 0.3s ease;
+        
+        .via {
+          color: rgba(255, 255, 255, 0.5);
+          font-weight: 500;
+          text-transform: lowercase;
+        }
+      }
+
+      .quote-icon {
+        font-size: 80px;
+        font-family: Georgia, serif;
+        color: rgba($themeColor3, 0.15);
+        line-height: 0.5;
+        margin-top: 10px;
+        animation: quoteFloat 4s ease-in-out infinite;
+        transition: color 0.4s ease;
+      }
+    }
+
+    .ai-review-card-body {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+      font-style: italic;
+      transform: translateZ(20px); // 3D Pop effect
+    }
+
+    &:hover {
+      border-color: rgba($themeColor3, 0.3);
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba($themeColor3, 0.05),
+        inset 0 1px 0 rgba($themeColor3, 0.15);
+        
+      &::before, &::after { opacity: 1; }
+      
+      .quote-icon {
+        color: rgba($themeColor3, 0.4);
+      }
+      
+      .ai-review-badge {
+        background: rgba($themeColor3, 0.15);
+        border-color: rgba($themeColor3, 0.3);
+        box-shadow: 0 4px 20px rgba($themeColor3, 0.15);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ai-reviews {
+    .ai-reviews-marquee {
+      padding: 20px 0;
+      
+      /* less intense mask on mobile */
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    }
+
+    .ai-review-card {
+      width: 320px;
+      padding: 30px;
+      
+      .ai-review-card-body {
+        font-size: 16px;
+      }
+    }
+  }
+}

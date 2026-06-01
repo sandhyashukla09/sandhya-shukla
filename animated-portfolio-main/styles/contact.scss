@@ -1,0 +1,140 @@
+@import "./theme.scss";
+
+.ai-contact {
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+
+  .ai-contact-zebra-img {
+    height: 150px;
+    width: 1000%;
+    background-size: contain;
+    margin: 100px 0 50px 0%;
+    opacity: 0.8;
+
+    img {
+      fill: blue;
+      color: yellow;
+    }
+  }
+
+  .ai-contact-box {
+    background: linear-gradient(180deg, rgba(30, 35, 45, 0), rgba(20, 25, 35, 0.4) 100%);
+    text-align: center;
+    position: relative;
+
+    .ai-contact-box-width {
+      max-width: 650px;
+      padding: 100px 20px 40px 20px;
+      margin: 0 auto;
+    }
+
+    .ai-contact-label {
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      color: $themeColor4;
+      font-family: "Source Code Pro", monospace;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .ai-contact-title {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.2;
+      margin-bottom: 28px;
+      font-weight: 800;
+      color: $themeColor3;
+      letter-spacing: -0.02em;
+    }
+
+    .ai-contact-text {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 auto;
+      max-width: 540px;
+    }
+
+    .ai-contact-button {
+      margin-top: 60px;
+      
+      .ai-button {
+        padding: 1.25rem 2.25rem;
+        font-size: 15px;
+        letter-spacing: 0.05em;
+        border-radius: 8px;
+        border: 1px solid rgba(100, 255, 218, 0.5);
+        background: rgba(100, 255, 218, 0.03);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        
+        &::after {
+          display: none; /* Disable the global sweep effect for a cleaner look */
+        }
+        
+        &:hover {
+          background: rgba(100, 255, 218, 0.1);
+          border-color: $themeColor4;
+          color: $themeColor4;
+          transform: translateY(-4px);
+          box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(100, 255, 218, 0.15);
+        }
+      }
+    }
+  }
+
+  .ai-contact-git-section {
+    margin-top: 150px;
+    font-size: 13px;
+    font-family: "Source Code Pro", monospace;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+
+    svg {
+      stroke: rgba(255, 255, 255, 0.5);
+      width: 14px;
+      transition: all 0.3s ease;
+    }
+
+    span {
+      margin: 0 8px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &:hover {
+      color: $themeColor4;
+      text-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+
+      svg {
+        stroke: $themeColor4;
+      }
+    }
+  }
+}
+
+/* Responsive Overrides */
+@media only screen and (max-width: 768px) {
+  .ai-contact {
+    .ai-contact-box {
+      .ai-contact-box-width {
+        padding: 80px 16px 20px 16px;
+      }
+      .ai-contact-button {
+        margin-top: 50px;
+      }
+    }
+    .ai-contact-git-section {
+      margin-top: 100px;
+    }
+  }
+}

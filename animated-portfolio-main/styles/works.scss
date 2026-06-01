@@ -1,0 +1,374 @@
+@import "./theme.scss";
+
+/* ─────────────────────────────────────────
+   Experience / Services Section — Premium
+───────────────────────────────────────── */
+
+.ai-works {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+
+  .ai-works-container {
+    width: 100%;
+    max-width: 760px;
+    padding: 120px 0 120px;
+    margin: auto;
+
+    /* ── Tab layout ── */
+    .ai-works-tab {
+      display: flex;
+      gap: 0;
+      align-items: flex-start;
+
+      /* ─────────────────────────────────
+         Left border — active indicator
+      ───────────────────────────────── */
+      .ai-works-left-border {
+        width: 2px;
+        border-radius: 2px;
+        background-color: $themeColor2;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+
+        /* glow pulse on the track itself */
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(100, 255, 218, 0.06) 50%,
+            transparent 100%
+          );
+          pointer-events: none;
+        }
+
+        .ai-works-left-border-selection {
+          width: 100%;
+          height: 48px;
+          background: $themeColor4;
+          border-radius: 2px;
+          transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+          box-shadow: 0 0 12px rgba(100, 255, 218, 0.45),
+                      0 0 28px rgba(100, 255, 218, 0.15);
+          position: relative;
+
+          /* shimmer sweep */
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              180deg,
+              rgba(255, 255, 255, 0.3) 0%,
+              transparent 100%
+            );
+            border-radius: 2px;
+          }
+        }
+      }
+
+      /* ─────────────────────────────────
+         Left tab nav — category buttons
+      ───────────────────────────────── */
+      .ai-works-tab-left {
+        flex-shrink: 0;
+
+        .ai-works-tab-left-button {
+          width: 100%;
+          padding: 0 22px 0 16px;
+          white-space: nowrap;
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          height: 48px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          cursor: pointer;
+          color: $themeColor3;
+          opacity: 0.65;
+          position: relative;
+          transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+          border-radius: 0 4px 4px 0;
+
+          /* hover state */
+          &:hover {
+            color: $themeColor4;
+            opacity: 1;
+            background-color: rgba(100, 255, 218, 0.05);
+            padding-left: 20px;
+          }
+        }
+
+        /* selected/active state */
+        .ai-works-tab-left-button-selected {
+          color: $themeColor4;
+          opacity: 1;
+          font-weight: 600;
+          background-color: rgba(100, 255, 218, 0.06);
+        }
+      }
+
+      /* ─────────────────────────────────
+         Right panel — experience card
+      ───────────────────────────────── */
+      .ai-works-tab-right {
+        flex: 1;
+        color: $themeColor3;
+        padding: 2px 0 0 36px;
+        min-height: 200px;
+
+        /* glassmorphism card shell */
+        .ai-works-tab-right-card {
+          background: linear-gradient(
+            135deg,
+            rgba(100, 255, 218, 0.03) 0%,
+            rgba(255, 255, 255, 0.01) 100%
+          );
+          border: 1px solid rgba(100, 255, 218, 0.08);
+          border-radius: 8px;
+          padding: 28px 30px 24px;
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          transition: border-color 0.35s ease, box-shadow 0.35s ease;
+          position: relative;
+          overflow: hidden;
+
+          /* subtle top-left accent corner */
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(
+              90deg,
+              $themeColor4,
+              transparent
+            );
+            opacity: 0.5;
+            border-radius: 0 0 4px 0;
+          }
+
+          &:hover {
+            border-color: rgba(100, 255, 218, 0.16);
+            box-shadow: 0 8px 40px rgba(100, 255, 218, 0.05);
+          }
+        }
+
+        /* role title */
+        .ai-works-tab-right-title {
+          margin-bottom: 6px;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.35;
+          color: $themeColor3;
+          letter-spacing: -0.01em;
+
+          /* highlight the "@ Company" part */
+          .ai-works-company-name {
+            color: $themeColor4;
+            font-weight: 600;
+          }
+        }
+
+        /* duration badge */
+        .ai-works-tab-right-duration {
+          margin-bottom: 24px;
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: $themeColor4;
+          opacity: 0.65;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          &::before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background-color: $themeColor4;
+            opacity: 0.5;
+            flex-shrink: 0;
+          }
+        }
+
+        /* bullet list */
+        .ai-works-tab-right-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+
+          .ai-works-tab-right-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            line-height: 1.75;
+            color: $themeColor3;
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+            padding-left: 0;
+
+            /* custom bullet via flex sibling */
+            &::before {
+              content: "▹";
+              color: $themeColor4;
+              font-size: 14px;
+              line-height: 1.75;
+              flex-shrink: 0;
+              margin-left: 0;
+              position: static;
+              transition: transform 0.2s ease;
+            }
+
+            &:hover {
+              opacity: 1;
+
+              &::before {
+                transform: translateX(3px);
+              }
+            }
+
+            &:last-child {
+              margin-bottom: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ───────────────────────────────────
+     Responsive: tablet (≤ 768px)
+  ─────────────────────────────────── */
+  @media only screen and (max-width: 768px) {
+    .ai-works-container {
+      padding: 80px 16px;
+
+      .ai-works-tab {
+        flex-direction: column;
+
+        .ai-works-left-border {
+          width: 100%;
+          height: 2px;
+          display: flex;
+          flex-direction: row;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scrollbar-width: none;
+
+          &::-webkit-scrollbar { display: none; }
+
+          &::before { display: none; }
+
+          .ai-works-left-border-selection {
+            display: none;
+          }
+        }
+
+        .ai-works-tab-left {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          border-bottom: 2px solid rgba(100, 255, 218, 0.15);
+          margin-bottom: 28px;
+          overflow-x: auto;
+          scrollbar-width: none;
+          &::-webkit-scrollbar { display: none; }
+
+          .ai-works-tab-left-button {
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 4px 4px 0 0;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            white-space: nowrap;
+            font-size: 12px;
+
+            &:hover {
+              padding-left: 16px;
+            }
+          }
+
+          .ai-works-tab-left-button-selected {
+            border-bottom: 2px solid $themeColor4;
+            background-color: transparent;
+          }
+        }
+
+        .ai-works-tab-right {
+          padding: 0;
+          width: 100%;
+
+          .ai-works-tab-right-card {
+            padding: 22px 20px 18px;
+          }
+
+          .ai-works-tab-right-title {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  /* ───────────────────────────────────
+     Responsive: mobile (≤ 480px)
+  ─────────────────────────────────── */
+  @media only screen and (max-width: 480px) {
+    .ai-works-container {
+      padding: 60px 12px;
+
+      .ai-works-tab {
+        .ai-works-tab-right {
+          .ai-works-tab-right-card {
+            padding: 18px 16px 14px;
+            border-radius: 6px;
+          }
+
+          .ai-works-tab-right-title {
+            font-size: 16px;
+          }
+
+          .ai-works-tab-right-list {
+            .ai-works-tab-right-list-item {
+              font-size: 13px;
+              margin-bottom: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Content-switch fade animation
+────────────────────────────────────────────── */
+@keyframes worksContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-works-tab-right-card {
+  animation: worksContentFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
