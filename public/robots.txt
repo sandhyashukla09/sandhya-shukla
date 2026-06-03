@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sandhya-shukla.vercel.app/sitemap.xml
