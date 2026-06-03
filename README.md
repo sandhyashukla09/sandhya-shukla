@@ -1,12 +1,12 @@
 <h1 align="center">
-    Afzal Imdad - Portfolio
+    Sandhya Shukla - Portfolio
 </h1>
 <p align="center">
   This personal portfolio website is developed by using <a href="https://www.netlify.com/" target="_blank">Next.js</a>.
 </p>
 <p align="center">
   Check Demo:
-  <a href="http://afzalimdad9.vercel.app" target="_blank">Personal Portfolio</a>
+  <a href=["http://afzalimdad9.vercel.app](https://sandhya-shukla.vercel.app/)" target="_blank">Personal Portfolio</a>
 </p>
 
 <div align="center">
@@ -57,8 +57,6 @@ Your app is ready to be deployed!
 
 Yes I've made this project **public** for letting others to fork and use it
 
-I would be more than happy if you give me credit at **@afzalimdad9**
-
 OpenSource contribution is something that makes internet more beautiful. So any Contributor who wants to make this website better can make contribution,which will be **greatly appreciated**.
 
 1. Fork the Project
@@ -68,5 +66,3 @@ OpenSource contribution is something that makes internet more beautiful. So any 
 5. Open a Pull Request
 
 Give a ⭐ if you like this website!
-
-<a href="https://www.buymeacoffee.com/afzalimdad9" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="Buy Me A Coffee" height= "60px" width= "217px" ></a>
